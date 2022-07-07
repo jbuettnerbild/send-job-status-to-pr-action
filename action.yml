@@ -1,0 +1,42 @@
+# action.yml
+name: 'Hello World'
+description: 'Greet someone and record the time'
+author: "jbuettnerbild"
+branding:
+  color: blue
+  icon: anchor
+inputs:
+  state:
+    description: 'The state of the status'
+    required: true
+    default: 'success'
+  target_url:
+    description: 'The target URL to associate with this status'
+    required: false
+  description:
+    description: 'A short description of the status'
+    required: false
+  context:
+    description: 'A string label to differentiate this status from the status of other systems. This field is case-insensitive.'
+    required: false
+    default: 'default'
+  repository:
+    description: 'The account owner and the repository. The name is not case sensitive. e.g. octocat/Hello-World'
+    required: true
+  github_token:
+    description: 'The github token for authorization'
+    required: true
+  sha:
+    description:  'The sha of the commit'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.state }}
+    - ${{ inputs.target_url }}
+    - ${{ inputs.description }}
+    - ${{ inputs.context }}
+    - ${{ inputs.repository }}
+    - ${{ inputs.github_token }}
+    - ${{ inputs.sha }}
