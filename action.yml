@@ -1,6 +1,6 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Send job state to pr'
+description: 'This action publish commit statuses for a given SHA. It can be used to publish a workflow result on a pull request.'
 author: "jbuettnerbild"
 branding:
   color: blue

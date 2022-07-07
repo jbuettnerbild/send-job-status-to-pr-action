@@ -1,5 +1,5 @@
 # Send job state to pr 
-This action publish commit statuses for a given SHA. Note: there is a limit of 1000 statuses per sha and context within a repository. Attempts to create more than 1000 statuses will result in a validation error.
+This action publish commit statuses for a given SHA. It can be used to publish a workflow result on a pull request. Note: there is a limit of 1000 statuses per sha and context within a repository. Attempts to create more than 1000 statuses will result in a validation error.
 
 ## Inputs
 
