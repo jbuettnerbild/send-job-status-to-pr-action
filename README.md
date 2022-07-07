@@ -54,7 +54,7 @@ jobs:
         run: echo "Hello World"
 
       - name: Send status to PR
-        uses: jbuettnerbild/send-job-status-to-pr@v1
+        uses: jbuettnerbild/send-job-status-to-pr-action@v1
         with:
           state: "${{ job.status }}"
           target_url: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
