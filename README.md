@@ -23,11 +23,11 @@ http://ci.example.com/user/repo/build/sha
 
 ## `repository`
 
-**Required** The account owner and the repository. The name is not case sensitive. e.g. octocat/Hello-World
+**Required** The account owner and the repository. The name is not case-sensitive. e.g., octocat/Hello-World
 
 ## `github_token`
 
-**Required** The github token for authorization
+**Required** The GitHub token for authorization
 
 ## Example usage
 

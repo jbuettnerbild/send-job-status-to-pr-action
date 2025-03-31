@@ -30,13 +30,17 @@ inputs:
     description:  'The sha of the commit'
     required: true
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.state }}
-    - ${{ inputs.target_url }}
-    - ${{ inputs.description }}
-    - ${{ inputs.context }}
-    - ${{ inputs.repository }}
-    - ${{ inputs.github_token }}
-    - ${{ inputs.sha }}
+  using: 'composite'
+  steps:
+    - run: |
+        PAYLOAD="{\"state\":\"$STATE\",\"target_url\":\"$TARGET_URL\",\"description\":\"$DESCRIPTION\",\"context\":\"$CONTEXT\"}"
+        curl -i -X POST -H "Accept: application/vnd.github+json" -H "authorization: Bearer $GITHUB_TOKEN" -d "$PAYLOAD" https://api.github.com/repos/$REPOSITORY/statuses/$SHA
+      shell: bash
+      env:
+        STATE: "${{ inputs.state }}"
+        TARGET_URL: "${{ inputs.target_url }}"
+        DESCRIPTION: "${{ inputs.description }}"
+        CONTEXT: "${{ inputs.context }}"
+        REPOSITORY: "${{ inputs.repository }}"
+        GITHUB_TOKEN: "${{ inputs.github_token }}"
+        SHA: "${{ inputs.sha }}"
